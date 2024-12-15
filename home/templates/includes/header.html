@@ -1,13 +1,16 @@
+{% load static %}
 <header>
     <!-- <div class="logo">FarmMarket</div> -->
      <div class="logo">
-    <img src="agro logo.png">
-     </div>
+        <a href="{% url 'home' %}">
+          <img src="{% static 'images/Agro logo.png' %}">
+        </a>
+    </div>
     <nav>
         <ul>
-            <li><a href="agro.html">Home</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="product.html">Products</a></li>
+            <li><a href="{% url 'products' %}">Products</a></li>
             <li><a href="service.html">Services</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="signup.html">Sign In</a></li>

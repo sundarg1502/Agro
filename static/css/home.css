@@ -47,7 +47,7 @@ nav ul li a {
 }
 
 .hero {
-    background-image: url('so-many-vegetables-this-field.jpg');
+    background-image: url('../images/so-many-vegetables-this-field.jpg');
     background-size: cover;
     background-position: center;
     height: 80vh;
@@ -146,3 +146,36 @@ footer .footer-links a {
     margin: 0 10px;
     text-decoration: none;
 }
+
+
+a {
+    text-decoration: none;
+  }
+  a:active  {
+    color: red;
+  }
+  
+  .carousel-item img {
+    object-fit: cover;
+    object-position: top;
+    height: 90vh;
+    /* overflow: hidden; */
+  }
+  
+  .old_price {
+    font-weight: bold;
+    color: red;
+  }
+  
+  .new_price {
+    font-weight: bold;
+    background-color: green;
+    color: white;
+    padding: 2px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+  }
+  
+  .pic-box {
+    position: relative;
+  }

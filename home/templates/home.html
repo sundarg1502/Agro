@@ -36,13 +36,17 @@
     <!-- Popular Categories -->
     <section class="categories">
         <h2>Popular Categories</h2>
-        <div class="category-list">
-            <div class="category">Vegetables</div>
-            <div class="category">Dairy Products</div>
-            <div class="category">Organic Grains</div>
-            <div class="category">Fruits</div>
-            <div class="category">Livestock</div>
-        </div>
+        {% for item in data %}
+            <div class="category-list">
+                <div class="card bs-3" style="">
+                        <img class="card-img-top" src="{% static item.image %}" alt="Card image cap" style='height:180px;width:286px;object-fit:cover;'>
+                        <div class="card-body">
+                        <h5 class="card-title">{{item.catagory_name}}</h5>
+                        <p class="card-text">{{item.description}}</p>
+                        <a href="#" class="btn btn-primary">Explore</a>
+                </div>
+            </div>
+        {% endfor %}
     </section>
 
     <!-- How It Works -->
