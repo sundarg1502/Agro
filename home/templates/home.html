@@ -1,0 +1,62 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Connecting Farmers with Markets</h1>
+            <p>Buy fresh produce directly from local farmers. Supporting sustainable agriculture.</p>
+            <div class="hero-buttons">
+                <a href="product.html" class="btn">Shop Now</a>
+                <a href="sell.html" class="btn">Upload Your Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature">
+            <h3>Easy to Use</h3>
+            <p>Whether you are a farmer or a buyer, our platform makes it easy to list or purchase products.</p>
+        </div>
+        <div class="feature">
+            <h3>Local and Fresh</h3>
+            <p>Get fresh produce from farms near you, ensuring quality and sustainability.</p>
+        </div>
+        <div class="feature">
+            <h3>Support Farmers</h3>
+            <p>Help support local farmers by cutting out the middlemen and paying them directly.</p>
+        </div>
+    </section>
+
+    <!-- Popular Categories -->
+    <section class="categories">
+        <h2>Popular Categories</h2>
+        <div class="category-list">
+            <div class="category">Vegetables</div>
+            <div class="category">Dairy Products</div>
+            <div class="category">Organic Grains</div>
+            <div class="category">Fruits</div>
+            <div class="category">Livestock</div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>For Buyers</h3>
+                <p>Search for products from local farmers, place an order, and get fresh produce at your doorstep.</p>
+            </div>
+            <div class="step">
+                <h3>For Farmers</h3>
+                <p>Sign up, list your products, and grow your business with us.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
