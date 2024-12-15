@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from home.models import Catagory,Products
+from home.forms import RegisterForm
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -24,3 +25,12 @@ def products(request):
     catagory = Catagory.objects.all()
     return render(request, 'products.html',{"data":data,'catagory':catagory,"display":"All Products"})
 
+def register(request):
+    form = RegisterForm()
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        for i in form:
+            print(i.username.value)
+        return render(request,'register.html',{'form':form})
+
+    return render(request,'register.html',{'form':form})

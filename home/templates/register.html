@@ -1,0 +1,116 @@
+{% comment %} 
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block title %}
+    Register Page
+{% endblock %}
+
+{% block css%}
+<link rel='stylesheet' href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="center">
+        <h1>Welcome to AGRO!</h1>
+        <h2>Signup</h2>
+        <form id="signForm" method="post">
+          <div class="txt_field">
+            <input type="text" id="name" required>
+            <span></span>
+            <label>Name</label>
+          </div>
+
+          <div class="txt_field">
+            <input type="number" id="age" required>
+            <span></span>
+            <label>Age</label>
+          </div>
+
+          <div class="txt_field">
+            <input type="email" id="email" required>
+            <span></span>
+            <label>Email</label>
+          </div>
+
+          <div class="txt_field">
+            <input type="text" id="username" required>
+            <span></span>
+            <label>Username</label>
+          </div>
+
+          <div class="txt_field">
+            <input type="password" id="password" required>
+            <span></span>
+            <label>Password</label>
+          </div>
+
+          <input type="submit" value="Signup">
+          <div class="signup_link">
+            Already registered? <a href="login.html">Login</a>
+          </div>
+        </form>
+    </div>
+
+{% endblock %}
+ {% endcomment %}
+
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page - AGRO</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+    <section>
+    </section>
+    <h1 class="two"></h1>
+    <img src="{% static 'images/Agro logo.png' %}" alt="AGRO Logo">  
+    <div class="center">
+        <h1>Welcome to AGRO!</h1>
+        <h2>Signup</h2>
+        <form id="signForm" method="post">
+            {% csrf_token %}
+        {% comment %} {% for fields in form %} {% endcomment %}
+        <div class="txt_field">
+            <input type="text" id="name" value='{{form.username.value}}' >
+            {% comment %} {% if form.errors.name %} {% endcomment %}
+            {% comment %} <span>{{form.username.value}}</span> {% endcomment %}
+            {% comment %} {% endif %} {% endcomment %}
+            <label>Name</label>
+          </div>
+
+          <div class="txt_field">
+            <input type="number" id="age" required>
+            <span></span>
+            <label>Age</label>
+          </div>
+
+          <div class="txt_field">
+            <input type="email" id="email" required>
+            <span></span>
+            <label>Email</label>
+          </div>
+
+          <div class="txt_field">
+            <input type="text" id="username" required>
+            <span></span>
+            <label>Username</label>
+          </div>
+
+          <div class="txt_field">
+            <input type="password" id="password" required>
+            <span></span>
+            <label>Password</label>
+          </div>
+
+          <input type="submit" value="Signup">
+          <div class="signup_link">
+            Already registered? <a href="login.html">Login</a>
+          </div>
+        </form>
+    </div>
+</body>
+</html>
