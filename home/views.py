@@ -83,3 +83,7 @@ def about(request):
 
 def services(request):
     return render(request, "services.html")
+    
+def user(request):
+    user = request.user
+    return render(request, "user.html",{'user':user})

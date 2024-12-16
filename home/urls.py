@@ -15,5 +15,6 @@ urlpatterns = [
     path("uploads/", views.uploads, name='uploads'),
     path("about/", views.about, name='about'),
     path("services/", views.services, name='services'),
+    path("user/", views.user, name='user'),
 
 ]
