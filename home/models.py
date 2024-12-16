@@ -1,6 +1,7 @@
 from django.db import models
 import os
 import datetime
+from django.contrib.auth.models import User
 
 def getFileName(request,filename):
     time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
@@ -18,6 +19,7 @@ class Catagory(models.Model):
 class Products(models.Model):
     name = models.CharField(max_length=100)
     catagory = models.ForeignKey(Catagory, on_delete=models.CASCADE)
+    seller = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
     quantity = models.IntegerField(null=True,blank=True)
     actuall_price = models.FloatField(null=True,blank=True)

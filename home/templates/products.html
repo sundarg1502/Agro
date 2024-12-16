@@ -28,10 +28,15 @@ Agro | Online Shopping
       {% for item in data %}
       <div class="col-md-4 col-lg-3">
         <div class="card my-3">
-          <img src="{% static item.image %}"  class="card-image-top" alt="Categories" style="height:180px;width:259px;object-fit:cover">
-          {% comment %} <a href="{% url 'productdetails' item.id %}"> {% endcomment %}
-          <div class="card-body">
-            <h5 class="card-title text-primary">{{ item.name }}</h5><small>({{item.catagory.catagory_name}})</small>
+          <div class="col-4 my-3 pic-box hidden">
+            {% if item.trending %}
+              <div class="hot">Hot</div>
+            {% endif %}
+            <img src="{% static item.image %}"  class="card-image-top" alt="Categories" style="height:180px;width:259px;object-fit:cover">
+            {% comment %} <a href="{% url 'productdetails' item.id %}"> {% endcomment %}
+          </div>
+            <div class="card-body">
+            <h5 class="card-title text-info">{{ item.name }}<small>({{item.catagory.catagory_name}}) by <a href="{% url 'products_seller' item.seller.username %}" class='text-info'>@{{item.seller.username}}</a></small></h5>
             <p class="card-text">
               <span class="float-start old_price"><s>Rs.{{ item.actuall_price | stringformat:'d'}}</s></span>
               <span class="float-end new_price">Rs.{{ item.new_price | stringformat:'d' }}</span>

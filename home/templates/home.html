@@ -11,8 +11,8 @@
             <h1>Connecting Farmers with Markets</h1>
             <p>Buy fresh produce directly from local farmers. Supporting sustainable agriculture.</p>
             <div class="hero-buttons">
-                <a href="product.html" class="btn">Shop Now</a>
-                <a href="sell.html" class="btn">Upload Your Products</a>
+                <a href="{% url 'products' %} " class="btn">Shop Now</a>
+                <a href="{% url 'uploads' %}" class="btn">Upload Your Products</a>
             </div>
         </div>
     </section>
@@ -43,7 +43,7 @@
                         <div class="card-body">
                         <h5 class="card-title">{{item.catagory_name}}</h5>
                         <p class="card-text">{{item.description}}</p>
-                        <a href="#" class="btn btn-primary">Explore</a>
+                        <a href="{% url 'products_catagory' item.id %}" class="btn btn-primary">Explore</a>
                 </div>
             </div>
         {% endfor %}

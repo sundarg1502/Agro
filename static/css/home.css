@@ -134,6 +134,7 @@ footer {
     background-color: #333;
     color: white;
     padding: 20px;
+    /* bottom: 0%; */
     text-align: center;
 }
 
@@ -178,4 +179,18 @@ a {
   
   .pic-box {
     position: relative;
+  }
+.hot {
+    background-color: orangered;
+    color: white;
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+    display: inline;
+    border-radius: 5px;
+    padding: 5px;
+    position:absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
   }
