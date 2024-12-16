@@ -11,7 +11,7 @@
             <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="{% url 'about' %}"><i class="fa fa-info-circle"></i> About</a></li>
             <li><a href="{% url 'products' %}"><i class="fa fa-cubes"></i> Products</a></li>
-            <li><a href="#"><i class="fa fa-cogs"></i> Services</a></li>
+            <li><a href="{% url 'services' %}"><i class="fa fa-cogs"></i> Services</a></li>
             <li><a href="#"><i class="fa fa-envelope"></i></i> Contact</a></li>
             {% if request.user.is_authenticated %}
             <li><a href="#"><i class="fa fa-users"></i> {{request.user.username}}</a></li>
