@@ -76,5 +76,7 @@ def logout(request):
     return redirect("/home")
 
 def uploads(request):
-    
     return render(request, "upload.html")
+
+def about(request):
+    return render(request, "about.html")
