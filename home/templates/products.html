@@ -15,10 +15,10 @@ Agro | Online Shopping
         <hr style="border-color:#b8bfc2;">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'products' %}" >All</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'home:products' %}" >All</a></li>
             {% for cata in catagory %}
-            <li class="breadcrumb-item"><a href="{% url 'products_catagory' cata.id %}" >{{cata.catagory_name}}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'home:products_catagory' cata.id %}" >{{cata.catagory_name}}</a></li>
             {% endfor %}
           </ol>
         </nav>
@@ -26,14 +26,14 @@ Agro | Online Shopping
       </div>
       <div class="p-3 mb-2 bg-success text-white">{{display}}</div>
       {% for item in data %}
-      <div class="col-md-4 col-lg-3">
+      {% comment %} <div class="col-md-4 col-lg-3">
         <div class="card my-3">
           <div class="col-4 my-3 pic-box hidden">
             {% if item.trending %}
               <div class="hot">Hot</div>
             {% endif %}
             <img src="{% static item.image %}"  class="card-image-top" alt="Categories" style="height:180px;width:259px;object-fit:cover">
-            {% comment %} <a href="{% url 'productdetails' item.id %}"> {% endcomment %}
+            <a href="{% url 'productdetails' item.id %}">
           </div>
             <div class="card-body">
             <h5 class="card-title text-info">{{ item.name }}<small>({{item.catagory.catagory_name}}) by <a href="{% url 'products_seller' item.seller.username %}" class='text-info'>@{{item.seller.username}}</a></small></h5>
@@ -44,10 +44,85 @@ Agro | Online Shopping
           </div>
         </a>
         </div>
-      </div>
+      </div> {% endcomment %}
+      <div class="col-md-4 col-lg-3 position-relative">
+        <div class="card my-3">
+            <div class="pic-box">
+                {% if item.trending %}
+                    <div class="hot">Hot</div>
+                {% endif %}
+                <img src="{% static item.image %}" class="card-img-top" alt="Categories" style="height:250px; width:100%; object-fit:cover;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-info">
+                    {{ item.name }}
+                    <small>({{item.catagory.catagory_name}}) by 
+                        <a href="{% url 'home:products_seller' item.seller.username %}" class='text-info'>
+                            @{{item.seller.username}}
+                        </a>
+                        <i class="fa fa-info-circle ms-1 text-muted"></i>
+                    </small>
+                </h5>
+                <p class="card-text">
+                    <span class="float-start old_price"><s>Rs.{{ item.actuall_price | stringformat:'d'}}</s></span>
+                    <span class="float-end new_price">Rs.{{ item.new_price | stringformat:'d' }}</span>
+                </p>
+                
+                <div class="d-flex justify-content-between align-items-center mt-5">
+                    <div class="d-flex align-items-center">
+                        <div class="input-group quantity-control me-2" style="max-width: 130px;">
+                            <button class="btn btn-outline-secondary minus-btn" type="button">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <input type="text" class="form-control text-center quantity-input" value="1" readonly>
+                            <button class="btn btn-outline-secondary plus-btn" type="button">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary add-to-cart-btn">
+                            <i class="fa fa-shopping-cart me-2"></i>Add to Cart
+                        </button>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <button class="btn b btn-sm favorite-btn border-0 p-0" style="z-index:1000">
+                                <i class="fa fa-heart" style="font-size:25px;border:2px solid red"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
       {% endfor %}
     </div>
   </div>
 </section>
  
 {% endblock content %}
+{% block js %}
+<script>
+// Update 
+document.addEventListener('DOMContentLoaded', function() {
+  const quantityControls = document.querySelectorAll('.quantity-control');
+  
+  quantityControls.forEach(control => {
+      const minusBtn = control.querySelector('.minus-btn');
+      const plusBtn = control.querySelector('.plus-btn');
+      const quantityInput = control.querySelector('.quantity-input');
+      
+      minusBtn.addEventListener('click', function() {
+          let currentValue = parseInt(quantityInput.value);
+          if (currentValue > 1) {
+              quantityInput.value = currentValue - 1;
+          }
+      });
+      
+      plusBtn.addEventListener('click', function() {
+          let currentValue = parseInt(quantityInput.value);
+          quantityInput.value = currentValue + 1;
+      });
+  });
+});
+</script>
+{% endblock %}
