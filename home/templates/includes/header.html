@@ -2,23 +2,23 @@
 <header>
     <!-- <div class="logo">FarmMarket</div> -->
      <div class="logo">
-        <a href="{% url 'home' %}">
+        <a href="{% url 'home:home' %}">
           <img src="{% static 'images/Agro logo.png' %}">
         </a>
     </div>
     <nav>
         <ul>
-            <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a></li>
-            <li><a href="{% url 'about' %}"><i class="fa fa-info-circle"></i> About</a></li>
-            <li><a href="{% url 'products' %}"><i class="fa fa-cubes"></i> Products</a></li>
-            <li><a href="{% url 'services' %}"><i class="fa fa-cogs"></i> Services</a></li>
+            <li><a href="{% url 'home:home' %}"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="{% url 'home:about' %}"><i class="fa fa-info-circle"></i> About</a></li>
+            <li><a href="{% url 'home:products' %}"><i class="fa fa-cubes"></i> Products</a></li>
+            <li><a href="{% url 'home:services' %}"><i class="fa fa-cogs"></i> Services</a></li>
             <li><a href="#"><i class="fa fa-envelope"></i></i> Contact</a></li>
             {% if request.user.is_authenticated %}
-            <li><a href="{% url 'user' %}"><i class="fa fa-users"></i> {{request.user.username}}</a></li>
-            <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i></i> Logout</a></li> 
+            <li><a href="{% url 'home:user' %}"><i class="fa fa-users"></i> {{request.user.username}}</a></li>
+            <li><a href="{% url 'home:logout' %}"><i class="fa fa-sign-out"></i></i> Logout</a></li> 
             {% else %}
-            <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
-            <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a></li>
+            <li><a href="{% url 'home:register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
+            <li><a href="{% url 'home:login' %}"><i class="fa fa-sign-in"></i> Login</a></li>
             {% endif %}
         </ul>
     </nav>

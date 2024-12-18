@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from home.models import *
 
 class RegisterForm(forms.ModelForm):
     username = forms.CharField(label='username',max_length=100,required=True)
@@ -32,3 +33,15 @@ class LoginForm(forms.Form):
         user = authenticate(username=username,password=password)
         if user is None:
             raise forms.ValidationError('UnAuthenticated User')
+        
+class UserUpdationForm(forms.ModelForm):
+    first_name = forms.CharField(label='first_name',required=True,max_length=100)
+    second_name = forms.CharField(label='second_name',required=True,max_length=100)
+    email = forms.EmailField(label='email',required=True)
+    phone = forms.IntegerField(required=True)
+    # age = forms.IntegerField(required=True)
+    address = forms.CharField(max_length=300)
+
+    class Meta:
+        model = UserProfile
+        fields =['first_name','second_name','email','phone','address']

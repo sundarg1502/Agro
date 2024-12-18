@@ -50,6 +50,7 @@ Agro | User
                 </ul>
               </div>
             </div>
+            {% if update %}
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
@@ -100,9 +101,100 @@ Agro | User
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                      <form method="GET" action="{% url 'home:user_update' %}">
+                        {%  csrf_token %}
+                      <input type='submit' class="btn btn-info ">
+                      </form>
                     </div>
                   </div>
+                </div>
+              </div>
+              {% else %}
+              {% for errors in form.errors  %}
+              {{form.errors}}
+              {% endfor %}
+
+              <div class="col-lg-8">
+                <div class="card">
+                  <div class="card-body">
+                    <form method='POST' >
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">First Name</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        <input type="text" name="first_name" class="form-control" value="{{form.first_name.value | default:user.username }}">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Second Name</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        <input type="text" name="second_name" class="form-control" value="{{form.second_name.value | default:user.username }}">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Email</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        <input type="text" name="email" class="form-control" value="{{form.email.value | default:user.username }}">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Age</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        <input type="text" name="age" class="form-control" value="{{form.first_name.value | default:user.username }}">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Phone</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        <input type="text" name="phone" class="form-control" value="{{form.first_name.value | default:user.username }}">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Address</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        <input type="text" name="address" class="form-control" value="{{form.first_name.value | default:user.username }}">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-3"></div>
+                      <div class="col-sm-9 text-secondary">
+                        <input type="submit" class="btn btn-info px-4" value="Save Changes">
+                      </div>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+                {% endif %}
+              <div class="col-md-4 col-lg-3">
+                <div class="card my-3">
+                  <div class="col-4 my-3 pic-box hidden">
+                    {% comment %} {% if item.trending %} {% endcomment %}
+                      <div class="hot">Hot</div>
+                    {% comment %} {% endif %} {% endcomment %}
+                    <img src="{% static item.image %}"  class="card-image-top" alt="Categories" style="height:180px;width:259px;object-fit:cover">
+                    {% comment %} <a href="{% url 'productdetails' item.id %}"> {% endcomment %}
+                  </div>
+                    <div class="card-body">
+                    {% comment %} <h5 class="card-title text-info">{{ item.name }}<small>({{item.catagory.catagory_name}}) by <a href="{% url 'products_seller' item.seller.username %}" class='text-info'>@{{item.seller.username}}</a></small></h5> {% endcomment %}
+                    <p class="card-text">
+                      <h1>hehdkm</h1>
+                      {% comment %} <span class="float-start old_price"><s>Rs.{{ item.actuall_price | stringformat:'d'}}</s></span> {% endcomment %}
+                      {% comment %} <span class="float-end new_price">Rs.{{ item.new_price | stringformat:'d' }}</span> {% endcomment %}
+                    </p>
+                  </div>
+                </a>
                 </div>
               </div>
 

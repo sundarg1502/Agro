@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from home.models import Catagory,Products
-from home.forms import RegisterForm,LoginForm
+from home.models import *
+from home.forms import *
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
@@ -86,4 +86,20 @@ def services(request):
     
 def user(request):
     user = request.user
-    return render(request, "user.html",{'user':user})
+    if request.method == 'POST':
+        return redirect("/user_update")
+    return render(request, "user.html",{'user':user,'update':True})
+
+def user_update(request):
+    print(request.method)
+    if request.method == 'POST':
+        form = UserUpdationForm(request.POST)
+        profile = UserProfile()
+        print(form.is_valid())
+        if form.is_valid():
+            update = form.save(commit=True)
+            update.user_id = 10
+            for field in form:
+                print(field)
+        return render(request, 'user.html',{'form':form})
+    return render(request, "user.html")
