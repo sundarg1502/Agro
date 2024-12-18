@@ -59,7 +59,7 @@ Agro | User
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        {{user.first_name}}
+                        {{profile.first_name}} {{profile.second_name}}
                     </div>
                   </div>
                   <hr>
@@ -68,7 +68,16 @@ Agro | User
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        {{user.email}}
+                        {{profile.email}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Age</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{profile.age}}
                     </div>
                   </div>
                   <hr>
@@ -77,16 +86,7 @@ Agro | User
                       <h6 class="mb-0">Phone</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      (239) 816-9029
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Mobile</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      (320) 380-4539
+                      {{profile.phone}}
                     </div>
                   </div>
                   <hr>
@@ -95,7 +95,7 @@ Agro | User
                       <h6 class="mb-0">Address</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Bay Area, San Francisco, CA
+                    {{profile.address}}
                     </div>
                   </div>
                   <hr>
@@ -124,7 +124,7 @@ Agro | User
                         <h6 class="mb-0">First Name</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                        <input type="text" name="first_name" class="form-control" value="{{form.first_name.value | default:user.username }}">
+                        <input type="text" name="first_name" class="form-control" value="{{form.first_name.value | default:profile.first_name }}">
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -132,7 +132,7 @@ Agro | User
                         <h6 class="mb-0">Second Name</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                        <input type="text" name="second_name" class="form-control" value="{{form.second_name.value | default:user.username }}">
+                        <input type="text" name="second_name" class="form-control" value="{{form.second_name.value | default:profile.second_name }}">
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -140,7 +140,7 @@ Agro | User
                         <h6 class="mb-0">Email</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                        <input type="text" name="email" class="form-control" value="{{form.email.value | default:user.username }}">
+                        <input type="text" name="email" class="form-control" value="{{form.email.value | default:profile.email }}">
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -148,7 +148,7 @@ Agro | User
                         <h6 class="mb-0">Age</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                        <input type="text" name="age" class="form-control" value="{{form.first_name.value | default:user.username }}">
+                        <input type="text" name="age" class="form-control" value="{{form.first_name.value | default:"10"}}">
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -156,7 +156,7 @@ Agro | User
                         <h6 class="mb-0">Phone</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                        <input type="text" name="phone" class="form-control" value="{{form.first_name.value | default:user.username }}">
+                        <input type="text" name="phone" class="form-control" value="{{form.first_name.value | default:profile.phone }}">
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -164,7 +164,7 @@ Agro | User
                         <h6 class="mb-0">Address</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                        <input type="text" name="address" class="form-control" value="{{form.first_name.value | default:user.username }}">
+                        <input type="text" name="address" class="form-control" value="{{form.first_name.value | default:profile.address }}">
                       </div>
                     </div>
                     <div class="row">

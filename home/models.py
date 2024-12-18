@@ -30,7 +30,7 @@ class Products(models.Model):
     trending = models.BooleanField(default=False)
 
 class UserProfile(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100,default='Empty')
     second_name = models.CharField(max_length=100,default='Empty')
     email = models.EmailField(default='Empty')

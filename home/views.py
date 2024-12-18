@@ -86,20 +86,26 @@ def services(request):
     
 def user(request):
     user = request.user
+    uid = user.id
+    profile = UserProfile.objects.get(user_id=uid)
     if request.method == 'POST':
         return redirect("/user_update")
-    return render(request, "user.html",{'user':user,'update':True})
+    return render(request, "user.html",{'user':user,'update':True,"profile":profile})
 
 def user_update(request):
+    user = request.user
+    uid = user.id
+    profile = UserProfile.objects.get(user_id=uid)
     print(request.method)
     if request.method == 'POST':
         form = UserUpdationForm(request.POST)
-        profile = UserProfile()
+        # profile = UserProfile()
         print(form.is_valid())
         if form.is_valid():
-            update = form.save(commit=True)
-            update.user_id = 10
+            update = form.save(commit=False)
+            update.user = request.user
+            form.save()
             for field in form:
                 print(field)
-        return render(request, 'user.html',{'form':form})
-    return render(request, "user.html")
+        return render(request, 'user.html',{'form':form,"profile":profile})
+    return render(request, "user.html",{"profile":profile})
