@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from home.models import *
 from home.forms import *
 from django.contrib import messages
@@ -87,7 +87,10 @@ def services(request):
 def user(request):
     user = request.user
     uid = user.id
-    profile = UserProfile.objects.get(user_id=uid)
+    # Fetch the record by ID
+    # profile = get_object_or_404(UserProfile, user_id=uid)
+    # profile = UserProfile.objects.get(user_id=uid)
+    profile = ''
     if request.method == 'POST':
         return redirect("/user_update")
     return render(request, "user.html",{'user':user,'update':True,"profile":profile})
@@ -95,7 +98,11 @@ def user(request):
 def user_update(request):
     user = request.user
     uid = user.id
-    profile = UserProfile.objects.get(user_id=uid)
+    # Fetch the record by ID
+    # profile = get_object_or_404(UserProfile, user_id=uid)
+    
+    # profile = UserProfile.objects.get(user_id=uid)
+    profile = ''
     print(request.method)
     if request.method == 'POST':
         form = UserUpdationForm(request.POST)

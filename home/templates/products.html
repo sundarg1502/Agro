@@ -26,26 +26,7 @@ Agro | Online Shopping
       </div>
       <div class="p-3 mb-2 bg-success text-white">{{display}}</div>
       {% for item in data %}
-      {% comment %} <div class="col-md-4 col-lg-3">
-        <div class="card my-3">
-          <div class="col-4 my-3 pic-box hidden">
-            {% if item.trending %}
-              <div class="hot">Hot</div>
-            {% endif %}
-            <img src="{% static item.image %}"  class="card-image-top" alt="Categories" style="height:180px;width:259px;object-fit:cover">
-            <a href="{% url 'productdetails' item.id %}">
-          </div>
-            <div class="card-body">
-            <h5 class="card-title text-info">{{ item.name }}<small>({{item.catagory.catagory_name}}) by <a href="{% url 'products_seller' item.seller.username %}" class='text-info'>@{{item.seller.username}}</a></small></h5>
-            <p class="card-text">
-              <span class="float-start old_price"><s>Rs.{{ item.actuall_price | stringformat:'d'}}</s></span>
-              <span class="float-end new_price">Rs.{{ item.new_price | stringformat:'d' }}</span>
-            </p>
-          </div>
-        </a>
-        </div>
-      </div> {% endcomment %}
-      <div class="col-md-4 col-lg-3 position-relative">
+      {% comment %} <div class="col-md-4 col-lg-3 position-relative">
         <div class="card my-3">
             <div class="pic-box">
                 {% if item.trending %}
@@ -91,7 +72,84 @@ Agro | Online Shopping
                 </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
+    <div class="col-md-4 col-lg-3 position-relative">
+      <div class="card my-3">
+          <div class="pic-box">
+              {% if item.trending %}
+                  <div class="hot">Hot</div>
+              {% endif %}
+              <img src="{% static item.image %}" class="card-img-top" alt="Categories" style="height:250px; width:100%; object-fit:cover;">
+          </div>
+          <div class="card-body">
+              <h5 class="card-title text-info">
+                  {{ item.name }}
+                  <small>({{item.catagory.catagory_name}}) by   
+                        <i class="fa fa-user-circle">
+                      <a href="{% url 'home:products_seller' item.seller.username %}" 
+                         class='text-info user-profile-link'
+                         data-bs-toggle="popover"
+                         data-bs-trigger="hover"
+                         data-bs-html="true"
+                         data-bs-content="
+                          <div class='user-popup'>
+                              <div class='user-popup-header'>
+                                  <img src='{{ item.seller.profile_image.url|default:'/static/images/default-avatar.png' }}' 
+                                       class='rounded-circle' 
+                                       style='width: 50px; height: 50px; object-fit: cover;'>
+                                  <div class='ms-2'>
+                                      <strong>{{ item.seller.get_full_name|default:item.seller.username }}</strong>
+                                      <div class='text-muted small'>Member since {{ item.seller.date_joined|date:'M Y' }}</div>
+                                  </div>
+                              </div>
+                              <div class='user-popup-body mt-2'>
+                                  <div class='small'>
+                                      <i class='fa fa-star text-warning'></i> Rating: {{ item.seller.rating|default:'N/A' }}
+                                  </div>
+                                  <div class='small'>
+                                      <i class='fa fa-box'></i> Products: {{ item.seller.products.count }}
+                                  </div>
+                                  <div class='small'>
+                                      <i class='fa fa-map-marker-alt'></i> {{ item.seller.location|default:'Location N/A' }}
+                                  </div>
+                              </div>
+                          </div>
+                         ">
+                          {{ item.seller.username}}
+                      </a></i>
+                  </small>
+              </h5>
+              <p class="card-text">
+                  <span class="float-start old_price"><s>Rs.{{ item.actuall_price | stringformat:'d'}}</s></span>
+                  <span class="float-end new_price">Rs.{{ item.new_price | stringformat:'d' }}</span>
+              </p>
+              
+              <div class="d-flex justify-content-between align-items-center mt-5">
+                  <div class="d-flex align-items-center">
+                      <div class="input-group quantity-control me-2" style="max-width: 130px;">
+                          <button class="btn btn-outline-secondary minus-btn" type="button">
+                              <i class="fa fa-minus"></i>
+                          </button>
+                          <input type="text" class="form-control text-center quantity-input" value="1" readonly>
+                          <button class="btn btn-outline-secondary plus-btn" type="button">
+                              <i class="fa fa-plus"></i>
+                          </button>
+                      </div>
+                      <button class="btn btn-primary add-to-cart-btn">
+                          <i class="fa fa-shopping-cart me-2"></i>Add to Cart
+                      </button>
+                      <div class="position-absolute top-0 end-0 m-2">
+                          <button class="btn b btn-sm favorite-btn border-0 p-0" style="z-index:1000">
+                              {% comment %} <i class="fa fa-heart text-danger" style="font-size:25px;"></i> {% endcomment %}
+                              
+                            <img src="{% static 'images/heart.svg' %}" alt="Example SVG" width="25" height="25">
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
     
     
       {% endfor %}
@@ -122,6 +180,27 @@ document.addEventListener('DOMContentLoaded', function() {
           let currentValue = parseInt(quantityInput.value);
           quantityInput.value = currentValue + 1;
       });
+  });
+});
+
+{% comment %} Users Hover {% endcomment %}
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize all popovers
+  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl, {
+          placement: 'top',
+          delay: { show: 300, hide: 100 }
+      })
+  })
+
+  // Close popover when clicking outside
+  document.addEventListener('click', function(e) {
+      if (!e.target.closest('[data-bs-toggle="popover"]')) {
+          popoverList.forEach(popover => {
+              popover.hide();
+          });
+      }
   });
 });
 </script>

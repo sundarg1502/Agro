@@ -92,3 +92,116 @@ img{
         top: 25%;
         left:41%;
     }
+
+
+    /* Products Css */
+    .card {
+        height: 100%;
+        transition: transform 0.2s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Responsive text */
+    .card-title {
+        font-size: calc(1rem + 0.2vw);
+        margin-bottom: 0.5rem;
+    }
+    
+    /* User popup styles */
+    .user-popup {
+        width: min(300px, 90vw);
+        max-width: 100%;
+    }
+    
+    .user-popup-header {
+        display: flex;
+        align-items: center;
+    }
+    
+    .user-popup-avatar {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+    
+    .user-popup-body {
+        border-top: 1px solid #eee;
+        padding-top: 8px;
+    }
+    
+    .user-popup-body .small {
+        margin-bottom: 4px;
+    }
+    
+    .user-popup-body i {
+        width: 16px;
+        margin-right: 4px;
+    }
+    
+    /* Popover enhancements */
+    .popover {
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        border: 1px solid rgba(0,0,0,0.1);
+        max-width: min(300px, 90vw) !important;
+    }
+    
+    .popover-body {
+        padding: 12px;
+    }
+    
+    /* Price styling */
+    .price-info {
+        font-size: 0.95rem;
+    }
+    
+    .new_price {
+        color: #28a745;
+    }
+    
+    .old_price {
+        color: #6c757d;
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 575.98px) {
+        .card-body {
+            padding: 1rem;
+        }
+        
+        .quantity-control {
+            width: 100%;
+            max-width: none;
+        }
+        
+        .quantity-control .input-group {
+            max-width: none;
+        }
+        
+        .add-to-cart-btn {
+            width: 100%;
+        }
+        
+        .favorite-btn {
+            opacity: 1 !important;
+        }
+    }
+    
+    /* Touch device optimizations */
+    @media (hover: none) {
+        .favorite-btn {
+            opacity: 1 !important;
+        }
+        
+        .card:hover {
+            transform: none;
+        }
+    }
+    
+    /* Ensure buttons are touch-friendly */
+    .btn {
+        min-height: 38px;
+    }

@@ -109,100 +109,186 @@ Agro | User
                   </div>
                 </div>
               </div>
-              {% else %}
-              {% for errors in form.errors  %}
-              {{form.errors}}
-              {% endfor %}
-
+            {% else %}
+            {% for errors in form.errors  %}
+            {{form.errors}}
+            {% endfor %}
               <div class="col-lg-8">
-                <div class="card">
-                  <div class="card-body">
-                    <form method='POST' >
-                    {% csrf_token %}
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">First Name</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" name="first_name" class="form-control" value="{{form.first_name.value | default:profile.first_name }}">
+                  <div class="card">
+                      <div class="card-body">
+                        <form method='POST' >
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">First Name</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            <input type="text" name="first_name" class="form-control" value="{{form.first_name.value | default:"profile.first_name" }}">
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Second Name</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            <input type="text" name="second_name" class="form-control" value="{{form.second_name.value | default:"profile.second_name" }}">
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            <input type="text" name="email" class="form-control" value="{{form.email.value | default:"profile.email" }}">
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Age</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            <input type="text" name="age" class="form-control" value="{{form.first_name.value | default:"10"}}">
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Phone</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            <input type="text" name="phone" class="form-control" value="{{form.first_name.value | default:"profile.phone" }}">
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Address</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            <input type="text" name="address" class="form-control" value="{{form.first_name.value | default:"profile.address" }}">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-3"></div>
+                          <div class="col-sm-9 text-secondary">
+                            <input type="submit" class="btn btn-info px-4" value="Save Changes">
+                          </div>
+                        </div>
+                        </form>
                       </div>
                     </div>
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Second Name</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" name="second_name" class="form-control" value="{{form.second_name.value | default:profile.second_name }}">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Email</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" name="email" class="form-control" value="{{form.email.value | default:profile.email }}">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Age</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" name="age" class="form-control" value="{{form.first_name.value | default:"10"}}">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Phone</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" name="phone" class="form-control" value="{{form.first_name.value | default:profile.phone }}">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Address</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="text" name="address" class="form-control" value="{{form.first_name.value | default:profile.address }}">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-3"></div>
-                      <div class="col-sm-9 text-secondary">
-                        <input type="submit" class="btn btn-info px-4" value="Save Changes">
-                      </div>
-                    </div>
-                  </form>
-                  </div>
-                </div>
-                {% endif %}
-              <div class="col-md-4 col-lg-3">
-                <div class="card my-3">
-                  <div class="col-4 my-3 pic-box hidden">
-                    {% comment %} {% if item.trending %} {% endcomment %}
-                      <div class="hot">Hot</div>
-                    {% comment %} {% endif %} {% endcomment %}
-                    <img src="{% static item.image %}"  class="card-image-top" alt="Categories" style="height:180px;width:259px;object-fit:cover">
-                    {% comment %} <a href="{% url 'productdetails' item.id %}"> {% endcomment %}
-                  </div>
-                    <div class="card-body">
-                    {% comment %} <h5 class="card-title text-info">{{ item.name }}<small>({{item.catagory.catagory_name}}) by <a href="{% url 'products_seller' item.seller.username %}" class='text-info'>@{{item.seller.username}}</a></small></h5> {% endcomment %}
-                    <p class="card-text">
-                      <h1>hehdkm</h1>
-                      {% comment %} <span class="float-start old_price"><s>Rs.{{ item.actuall_price | stringformat:'d'}}</s></span> {% endcomment %}
-                      {% comment %} <span class="float-end new_price">Rs.{{ item.new_price | stringformat:'d' }}</span> {% endcomment %}
-                    </p>
-                  </div>
-                </a>
-                </div>
               </div>
-
-            </div>
+            {% endif %}
           </div>
-
+          <!-- New Favorites Section -->
+        <div class="row mt-4">
+          <div class="col-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h4 class="mb-0">My Favorite Items</h4>
+                  </div>
+                  <div class="card-body">
+                      <div class="row">
+                          {% if favorite_items %}
+                              {% for item in favorite_items %}
+                                  <div class="col-md-4 mb-4">
+                                      <div class="card h-100">
+                                          <img src="{% static item.image %}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                          <div class="card-body">
+                                              <h5 class="card-title">{{ item.name }}</h5>
+                                              <p class="card-text">
+                                                  <span class="text-muted">Category: {{ item.category }}</span><br>
+                                                  <span class="text-success">₹{{ item.price }}</span>
+                                              </p>
+                                              <div class="d-flex justify-content-between">
+                                                  <a href="{% url 'product_detail' item.id %}" class="btn btn-info btn-sm">View Details</a>
+                                                  <button class="btn btn-danger btn-sm" onclick="removeFavorite({{ item.id }})">
+                                                      <i class="fas fa-heart-broken"></i> Remove
+                                                  </button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              {% endfor %}
+                          {% else %}
+                              <div class="col-12">
+                                  <p class="text-center text-muted">No favorite items yet</p>
+                              </div>
+                          {% endif %}
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
+      </div>
+
+      <!-- New Cart Section -->
+      <div class="row mt-4 mb-4">
+          <div class="col-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h4 class="mb-0">My Cart</h4>
+                  </div>
+                  <div class="card-body">
+                      {% if cart_items %}
+                          <div class="table-responsive">
+                              <table class="table table-hover">
+                                  <thead>
+                                      <tr>
+                                          <th>Product</th>
+                                          <th>Price</th>
+                                          <th>Quantity</th>
+                                          <th>Total</th>
+                                          <th>Actions</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {% for item in cart_items %}
+                                          <tr>
+                                              <td>
+                                                  <div class="d-flex align-items-center">
+                                                      <img src="{% static item.image %}" alt="{{ item.name }}" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
+                                                      <div class="ms-3">
+                                                          <h6 class="mb-0">{{ item.name }}</h6>
+                                                          <small class="text-muted">{{ item.category }}</small>
+                                                      </div>
+                                                  </div>
+                                              </td>
+                                              <td>₹{{ item.price }}</td>
+                                              <td>
+                                                  <div class="input-group" style="width: 120px;">
+                                                      <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity({{ item.id }}, 'decrease')">-</button>
+                                                      <input type="text" class="form-control text-center" value="{{ item.quantity }}" readonly>
+                                                      <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity({{ item.id }}, 'increase')">+</button>
+                                                  </div>
+                                              </td>
+                                              <td>₹{{ item.total }}</td>
+                                              <td>
+                                                  <button class="btn btn-danger btn-sm" onclick="removeFromCart({{ item.id }})">
+                                                      <i class="fas fa-trash"></i> Remove
+                                                  </button>
+                                              </td>
+                                          </tr>
+                                      {% endfor %}
+                                  </tbody>
+                                  <tfoot>
+                                      <tr>
+                                          <td colspan="3" class="text-end"><strong>Cart Total:</strong></td>
+                                          <td><strong>₹{{ cart_total }}</strong></td>
+                                          <td>
+                                              <a href="{% url 'checkout' %}" class="btn btn-success btn-sm">
+                                                  Proceed to Checkout
+                                              </a>
+                                          </td>
+                                      </tr>
+                                  </tfoot>
+                              </table>
+                          </div>
+                      {% else %}
+                          <p class="text-center text-muted">Your cart is empty</p>
+                      {% endif %}
+                  </div>
+              </div>
+          </div>
+      </div>
+
     </div>
-
+</div>
 {% endblock %}
