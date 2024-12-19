@@ -23,15 +23,17 @@ A fully functional e-commerce website built with Django, HTML, and CSS.
 
 ### Index Page
 ![Homepage Screenshot](/static/images/Screenshots/index.png)
+
 *Index page featuring Login, Logout, and Shop Now *
 
 ### Homepage
 ![Homepage Screenshot](/static/images/Screenshots/home.png)
+
 *Index page featuring product categories, featured items, and navigation*
 
-### Product Catalog
+<!-- ### Product Catalog
 ![Product Catalog](/screenshots/product-catalog.png)
-*Product listing page with user and catagory filters functionality*
+*Product listing page with user and catagory filters functionality* -->
 
 <!-- ### Product Detail
 ![Product Detail](/screenshots/product-detail.png)
@@ -51,7 +53,9 @@ A fully functional e-commerce website built with Django, HTML, and CSS.
 
 ### Mobile Responsive Design
 ![Mobile View](/static/images/Screenshots/responsivehome.png)
+
 ![Mobile View](/static/images/Screenshots/responsiveproducts.png)
+
 *Mobile-friendly interface showing responsive design*
 
 
