@@ -23,8 +23,8 @@ A fully functional e-commerce website built with Django, HTML, and CSS.
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/django-ecommerce.git
-cd django-ecommerce
+git clone https://github.com/yourusername/django-ecommerce.git](https://github.com/sundarg1502/Agro.git
+cd Agro
 ```
 
 2. Create and activate virtual environment
@@ -33,76 +33,36 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-4. Configure environment variables
-```bash
-cp .env.example .env
-# Edit .env file with your settings
-```
-
-5. Run migrations
+3. Run migrations
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-6. Create superuser
+4. Create superuser
 ```bash
 python manage.py createsuperuser
 ```
 
-7. Run development server
+5. Run development server
 ```bash
 python manage.py runserver
-```
-
-## Project Structure
-
-```
-django-ecommerce/
-│
-├── manage.py
-├── requirements.txt
-├── static/
-│   ├── css/
-│   ├── js/
-│   └── images/
-│
-├── templates/
-│   ├── base.html
-│   ├── products/
-│   ├── cart/
-│   └── accounts/
-│
-└── ecommerce/
-    ├── settings.py
-    ├── urls.py
-    ├── wsgi.py
-    └── apps/
-        ├── products/
-        ├── cart/
-        ├── orders/
-        └── accounts/
 ```
 
 ## Configuration
 
 ### Database Setup
-By default, the project uses SQLite. To use PostgreSQL or another database, update `settings.py`:
+By default, the project uses mysql. To use PostgreSQL or another database, update `settings.py`:
 
 ```python
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'your_db_name',
-        'USER': 'your_db_user',
-        'PASSWORD': 'your_db_password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER':'root',
+        'NAME': 'Agro',
+        'PASSWORD':'1234@',
+        'HOST':"127.0.0.1",
+        'PORT' :'3306'
     }
 }
 ```
@@ -137,13 +97,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 - Comment complex logic
 - Write tests for new features
 
-## Testing
-
-Run tests with:
-```bash
-python manage.py test
-```
-
 ## Deployment
 
 1. Set `DEBUG = False` in production
@@ -167,9 +120,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-- Your Name
-- Email: your.email@example.com
-- GitHub: [@yourusername](https://github.com/yourusername)
+- Sundarraj G
+- Email: sundarg2812@gmail.com
+- GitHub: [@sundarg1502](https://github.com/sundarg1502)
 
 ## Acknowledgments
 
