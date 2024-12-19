@@ -19,6 +19,42 @@ A fully functional e-commerce website built with Django, HTML, and CSS.
 - pip (Python package manager)
 - Virtual environment (recommended)
 
+## Demo Screenshots
+
+### Index Page
+![Homepage Screenshot](/static/images/Screenshots/index.png)
+*Index page featuring Login, Logout, and Shop Now *
+
+### Homepage
+![Homepage Screenshot](/static/images/Screenshots/home.png)
+*Index page featuring product categories, featured items, and navigation*
+
+### Product Catalog
+![Product Catalog](/screenshots/product-catalog.png)
+*Product listing page with user and catagory filters functionality*
+
+<!-- ### Product Detail
+![Product Detail](/screenshots/product-detail.png)
+*Detailed product view with images, description, and add to cart option* -->
+
+<!-- ### Shopping Cart
+![Shopping Cart](/screenshots/shopping-cart.png)
+*Shopping cart with product quantities and checkout options* -->
+
+<!-- ### Checkout Process
+![Checkout Process](/screenshots/checkout.png)
+*Secure checkout page with shipping and payment details* -->
+
+<!-- ### Admin Dashboard
+![Admin Dashboard](/screenshots/admin-dashboard.png)
+*Administrative interface for managing products, orders, and users* -->
+
+### Mobile Responsive Design
+![Mobile View](/static/images/Screenshots/responsivehome.png)
+![Mobile View](/static/images/Screenshots/responsiveproducts.png)
+*Mobile-friendly interface showing responsive design*
+
+
 ## Installation
 
 1. Clone the repository
@@ -130,34 +166,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Bootstrap for UI components
 - Font Awesome for icons
 
-
-## Demo Screenshots
-
-### Homepage
-![Homepage Screenshot](/screenshots/homepage.png)
-*Homepage featuring product categories, featured items, and navigation*
-
-### Product Catalog
-![Product Catalog](/screenshots/product-catalog.png)
-*Product listing page with filters and search functionality*
-
-### Product Detail
-![Product Detail](/screenshots/product-detail.png)
-*Detailed product view with images, description, and add to cart option*
-
-### Shopping Cart
-![Shopping Cart](/screenshots/shopping-cart.png)
-*Shopping cart with product quantities and checkout options*
-
-### Checkout Process
-![Checkout Process](/screenshots/checkout.png)
-*Secure checkout page with shipping and payment details*
-
-### Admin Dashboard
-![Admin Dashboard](/screenshots/admin-dashboard.png)
-*Administrative interface for managing products, orders, and users*
-
-### Mobile Responsive Design
-![Mobile View](/screenshots/mobile-view.png)
-*Mobile-friendly interface showing responsive design*
 
