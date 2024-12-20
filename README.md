@@ -63,7 +63,7 @@ A fully functional e-commerce website built with Django, HTML, and CSS.
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/django-ecommerce.git](https://github.com/sundarg1502/Agro.git
+git clone https://github.com/sundarg1502/Agro.git
 cd Agro
 ```
 
