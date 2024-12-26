@@ -35,6 +35,7 @@ A fully functional e-commerce website built with Django, HTML, and CSS.
 ![Product Catalog](/screenshots/product-catalog.png)
 *Product listing page with user and catagory filters functionality* -->
 
+
 <!-- ### Product Detail
 ![Product Detail](/screenshots/product-detail.png)
 *Detailed product view with images, description, and add to cart option* -->
